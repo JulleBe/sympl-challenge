@@ -1,0 +1,68 @@
+@import '../../styles/variables';
+
+.filter_wrapper {
+    margin: auto;
+    animation-name: popUp;
+    animation-play-state: running;
+    animation-duration: 0.4s ;
+    animation-iteration-count: 1;
+    transform: 0.2s ease;
+    .filter_container {
+        display: grid;
+        grid-template-columns: 1fr 80px;
+        .filter_selectedOverview {
+            display: flex;
+            flex-wrap: wrap;
+            flex-shrink: 1;
+            flex-grow: 1;
+        }
+    }
+    .filter_clearBtnWrapper {
+        display: flex;
+        align-items: center;
+        .filter_clearBtn {
+            background-color: transparent;
+            border:none;
+            height: 50px;
+            width: 100%;
+            font-size: 0.9rem;
+            color: $darkCyan;
+            transition: 0.2s ease;
+            font-weight: 600;
+            cursor:pointer;
+            p {
+                position: relative;
+                &::after {
+                    content: ''; 
+                    display: flex;
+                    width: 0px;
+                    height: 1.5px;
+                    transition: 0.1s ease;
+                    background-color: $darkCyan;
+                    position: absolute;
+                    transform: translateX(-50%);
+                    left: 50%;
+                    bottom: 0px;
+                }
+            }
+            
+            &:hover {
+                color: $primaryCyan;
+                p {&::after {
+                    background-color: $primaryCyan;
+                    width: 40px;
+                }}
+            }
+        }
+    }
+}
+
+@keyframes popUp {
+    0% {
+        transform: translateY(100%) ;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%) ;
+    }
+}

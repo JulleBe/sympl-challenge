@@ -1,0 +1,68 @@
+@import './_reset.scss';
+@import './_variables.scss';
+
+body {
+    background-color: $background;
+}
+header {
+    height: 300px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url('../assets/backgrounds/bg-header-desktop.svg');
+    background-size: cover;
+    background-color: $primaryCyan;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .header_title {
+        width: 70%;
+        text-align: left;
+        h2, h4 {
+            font-family: $mainFont;
+        }
+        h2 {
+            text-transform: uppercase;
+            font-weight: bolder;
+            font-size: 3rem;
+            color: $background;
+        }
+        h4 {
+            text-transform: lowercase;
+            font-weight: bold;
+            color: $darkestCyan;
+        }
+    }
+    @media only screen and (max-width: $mobile) {
+        h2 {
+            font-size: 1.8rem;
+        }
+    }
+    .header_contentWrapper {
+        display: flex;
+        width: 80%;
+        flex-wrap: wrap;
+    }
+}
+main {
+   position: relative;
+   width: 96%;
+   transition: 0.3s ease;
+   margin: auto;
+   top: -50px;
+} 
+
+.responsiveFrame {
+    box-shadow: rgba($color: $primaryCyan, $alpha: 0.6) 3px 3px 10px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    @media only screen and (max-width: 700px) {
+        width: 80%;
+    }
+}

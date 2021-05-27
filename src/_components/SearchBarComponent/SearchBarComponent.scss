@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+
+.searchbar_container {
+    margin: 20px 0px;
+    position: relative;
+  
+        &:hover {
+            background-color: rgba($color: $filterTablets, $alpha: 0.5);
+        }
+
+    .searchbar_iconContainer {
+        position: absolute;
+        right: 3px;
+        top: 10px;
+        pointer-events: none;
+        svg {
+            height: 25px;
+            fill: rgba($color: $filterTablets, $alpha: 0.5);
+        }
+    }
+}
+.searchbar_input {
+    padding: 10px 2px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-family: $mainFont;
+    color: $filterTablets;
+    outline: none;
+    position: relative;
+    overflow: visible;
+    display: block;
+    transition: 0.2s ease-out;
+    border-radius: 4px;
+    &::after {
+        content: 'test';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        position: absolute;
+        bottom: 10px;
+        left: 2px;
+        opacity: 1;
+    }
+    &:hover {
+        background: rgba($color: $filterTablets, $alpha: 0.1);
+    }
+    &:focus{
+        + .searchbar_underline {
+            background-color: rgba($color: $filterTablets, $alpha: 0.6);
+            width: 100%;
+        }
+    } 
+}
+
+.searchbar_underline{
+    height: 3px;
+    border-radius: 2px;
+    width: 0%;
+    background-color: rgba($color: $filterTablets, $alpha: 0.1);
+    position: absolute;
+    transform: translateX(-50%);
+    transition: 0.1s ease-out;
+    left: 50%;
+}

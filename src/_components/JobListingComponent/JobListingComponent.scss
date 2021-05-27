@@ -1,0 +1,252 @@
+@import '../../styles/variables';
+
+.listingContainer {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    grid-template-rows: repeat(1, 100%);
+    grid-gap: 5px;
+    font-family: 'Spartan', sans-serif;
+    min-height: 80px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    overflow: hidden;
+    .listing_logoContainer {
+        grid-column: 1 ;
+        grid-row: span 1;
+        place-self: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        picture {
+                width: 70px;
+                height: 70px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .listingInfo {
+        display: grid;
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 33%);
+    }
+    .listing_companyName {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        h4 {
+            display: flex;
+            font-weight: 600;
+            font-size: 13px;
+            color: $primaryCyan;
+        }
+    }
+
+    .listing_jobFunction {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: flex-end;
+        h3 {
+            display: flex;
+            font-weight: 700;
+            font-size: 18px;
+            transition: 0.2s ease;
+
+        }
+    }
+    .listing_jobInformation {
+        grid-column: 1;
+        grid-row: 3;
+        align-self: flex-end;
+        ul {
+            padding: 0px;
+            display: flex;
+            li {
+                display: inline-flex;
+                font-size: 12px;
+                color: $darkCyan;
+                position: relative;
+                margin-right: 40px;
+                &::after {
+                    content: '';
+                    display: block;
+                    height: 4px;
+                    width: 4px;
+                    position: absolute;
+                    right: -20px;
+                    background-color: $darkCyan;
+                    border-radius: 50%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                } 
+            }
+            :nth-child(3) {
+                &::after {
+                    content: none;
+                }
+            }
+        }
+    }
+    .listing_filtersWrapper {
+        grid-column: 3;
+        grid-row: span 1;
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        flex-shrink: 1;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &:hover, 
+    &:focus {
+        .listing_jobFunction {
+            color: $primaryCyan;
+        }
+        &::after{
+            transform: translateY(0%);
+        }
+    }
+    &::after {
+        content:'';
+        display: block;
+        height: 100%;
+        width: 4px;
+        background-color: rgba($color: $primaryCyan, $alpha: 0.7);
+        position: absolute;
+        left: 0px;
+        transition: 0.2s ease-out;
+        transform: translateY(100%);
+    }
+}
+
+.listing_isActive {
+    &::after {
+        content:'';
+        display: block;
+        height: 100%;
+        width: 4px;
+        background-color: rgba($color: $primaryCyan, $alpha: 1);
+        position: absolute;
+        left: 0px;
+        transition: 0.2s ease-out;
+        transform: translateY(0%);
+    }
+}
+
+.listing_tagsContainer {
+    display: flex;
+    margin-left: 10px;
+
+}
+.listing_tag {
+    margin: 5px;
+    p {
+        font-family: $mainFont;
+        font-size: 0.6rem;
+        display: inline-block;
+        line-height: 0.4rem;
+        text-transform: uppercase;
+        font-weight: 1000;
+        padding: 8px 10px 6px;
+        border-radius: 15px;
+        background-color: black;
+        width: auto;
+        color: white;
+    }
+}
+
+.listing_newTag {
+    p {
+        background-color: rgba($color: $primaryCyan, $alpha: 1.0);
+    }
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .listingContainer {
+        position: relative;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        margin: 40px auto;
+        padding-left: 30px;
+        height: auto;
+        overflow: visible;
+        .listingInfo {
+            grid-template-rows: repeat(3, auto);
+        }
+        .listing_logoContainer {
+            position: absolute;
+            display: block;
+            top: -25px;
+            left: 30px;
+            width: 55px;
+            height: 55px;
+            picture {
+              width: 100%;
+              height: 100%;  
+              display: block;
+              img {
+                  object-fit: contain;
+                  height: 100%;
+                  width: 100%;
+              }
+            }
+        }
+        .listing_companyName {
+            grid-row: 1;
+            grid-column: 1;
+            margin-bottom: 10px;
+        }
+        .listing_jobFunction {
+            grid-row: 2;
+            grid-column: 1;
+            text-align: left;
+            margin: 10px 0px;
+        }
+        .listing_jobInformation {
+            grid-row: 3;
+            grid-column: 1;
+            text-align: left;
+            margin-top: 5px;
+        }
+        .listing_filtersWrapper {
+            grid-row: 2;
+            grid-column: 1;
+            border-top: 1px solid $darkCyan;
+            margin-top: 15px;
+            padding: 15px 0px;
+            justify-content: flex-start;
+        }
+    }
+    &::after {
+        top: 0px;
+        transform: translateY(0%) !important;
+        background-color: transparent !important;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    &:hover {
+        &::after {
+            background-color: rgba($color: $primaryCyan, $alpha: 0.7) !important;
+        }
+    }
+    .listing_isActive {
+       
+        &::after {
+            background-color: $primaryCyan !important;
+        }
+    }
+}

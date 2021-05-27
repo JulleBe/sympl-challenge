@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+
+.filterTag {
+    display: inline-flex;
+    align-items: center;
+    background-color: $filterTablets;
+    width: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 8px;
+    .filterTag_text {
+        font-size: 0.8rem;
+        font-family: $mainFont;
+        padding: 5px 10px;
+        color: $primaryCyan;
+        font-weight: 600;
+    }
+    .filterTag_deleteBtn {
+        background-color: $primaryCyan;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease;
+        svg {
+            padding: 10px 5px;
+            display: flex;
+        }
+        &:hover {
+            background-color: $darkestCyan;
+        }
+    }
+}
