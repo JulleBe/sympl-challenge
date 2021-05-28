@@ -1,28 +1,28 @@
+// Main app component
 import './App.css';
 import './styles/_main.scss'
-import jobListings from './data.json';
-import JobListingComponent from './_components/JobListingComponent/JobListingComponent';
 import { useEffect, useState } from 'react';
+// Componenten
+import JobListingComponent from './_components/JobListingComponent/JobListingComponent';
 import FilterComponent from './_components/FilteringComponent/FilterComponent';
 import SearchBar from './_components/SearchBarComponent/SearchBarComponent';
-import {map} from 'underscore/modules/map.js';
-
+// Data
+import jobListings from './data.json';
 function App() {
   var _ = require('lodash');
   const [selectedFilters, updateFilter] = useState([])
   // Voegt een nieuw filter aan de lijst toe
   function addToFilter(filterName) {
+    // Check of de filter wel of niet aangeduid is.
     let isSelected = selectedFilters.includes(filterName);
-  
-
+    // Indien deze niet aangeduid is, wordt deze toegevoegd aan de lijst
     if(isSelected !== true) {
       let tempArray = [...selectedFilters];
       tempArray.push(filterName)
       updateFilter(tempArray)
-    
     }
     else {
-      // Waarde al geselecteerd
+      // Waarde al geselecteerd, niks moet gedaan worden
      
     }
     
@@ -34,24 +34,19 @@ function App() {
     let indexOfFilter = tempArray.indexOf(filterName)
     tempArray.splice(indexOfFilter, 1)
     updateFilter(tempArray)
-  
   }
 
+  // Functie dat de eerste punt van de Logo URL string verwijderd voor de require
   function removeFirstPointLogoURL(logoURL) {
     return  logoURL.substring(1);
  }
-
- 
-
+  // Houd de geselecteerde filters in het oog
   useEffect(() => {
 
   }, [selectedFilters ])
-
-
+  // Vergelijkt 2 arrayen om te checken of job listing wel past bij de aangeduidde filter
   function compareFilters (selFilters, jobFilters) {
-    let tempArray = [];
-    let matches = false;
-    
+    let tempArray = [];    
     // Sorteren van beide arrays
     selFilters.sort()
     jobFilters.sort()
@@ -86,7 +81,6 @@ function App() {
       <main>
       {selectedFilters.length > 0 && 
         <div className="filter_wrapper">
-         
             <FilterComponent 
               addToFilter={addToFilter}
               removeFilter={removeFilter}
@@ -95,27 +89,47 @@ function App() {
               updateArray={updateFilter}/>
         </div>
         }
-
-        <div className="jobListing_wrapper">
-          
-        {  
-            jobListings.map(listing => {
-             
-            const IMG = (imgName) => {
-              return require(`./assets${removeFirstPointLogoURL(imgName)}`)
-            }
-
-            const listingCategories = [
-              listing.level,
-              listing.role,
-              ...listing.tools,
-              ...listing.languages
-            ]
-            if(selectedFilters.length !== 0 ){
-
-              if((compareFilters(selectedFilters, listingCategories) === true)){
+        <div className="jobListing_wrapper">  
+          {   // Loopt over de job listings en rendert deze binnen de DOM
+              jobListings.map(listing => {
+              // Laad de afbeeldingen binnen vanuit de assets folder met een dynamische link
+              const IMG = (imgName) => {
+                return require(`./assets${removeFirstPointLogoURL(imgName)}`)
+              }
+              // Verzamelt alle mogelijke filters
+              const listingCategories = [
+                listing.level,
+                listing.role,
+                ...listing.tools,
+                ...listing.languages
+              ]
+              // Indien er geen filters aangeduid zijn, worden de listings normaal gerenderd
+              if(selectedFilters.length !== 0 ){
+                // Enkel wanneer de filters aangeduid zijn, worden deze gefilterd
+                if((compareFilters(selectedFilters, listingCategories) === true)){
+                  return ( 
+                    <JobListingComponent 
+                      key={`${listing.li}-${listing.company}`}
+                      companyName={listing.company}
+                      companyLogo={IMG(listing.logo)}
+                      isNew={listing.new}
+                      isFeatured={listing.featured}
+                      functionTitle={listing.position}
+                      functionLevel={listing.level}
+                      functionRole={listing.role}
+                      contractType={listing.contract}
+                      location={listing.location}
+                      tools={listing.tools}
+                      languages={listing.languages}
+                      postedAt={listing.postedAt}
+                      addToFilterfunction={addToFilter} 
+                      selectedFilters={selectedFilters}
+                      removeFromFilters={removeFilter}
+                      />)
+                  }
+              }else {
+                // Geen filter aangeduid, dus worden ze allemaal gerenderd
                 return (
-                     
                   <JobListingComponent 
                     key={`${listing.li}-${listing.company}`}
                     companyName={listing.company}
@@ -134,37 +148,11 @@ function App() {
                     selectedFilters={selectedFilters}
                     removeFromFilters={removeFilter}
                     />)
-                }
-            }else {
-              return (
-                     
-                <JobListingComponent 
-                  key={`${listing.li}-${listing.company}`}
-                  companyName={listing.company}
-                  companyLogo={IMG(listing.logo)}
-                  isNew={listing.new}
-                  isFeatured={listing.featured}
-                  functionTitle={listing.position}
-                  functionLevel={listing.level}
-                  functionRole={listing.role}
-                  contractType={listing.contract}
-                  location={listing.location}
-                  tools={listing.tools}
-                  languages={listing.languages}
-                  postedAt={listing.postedAt}
-                  addToFilterfunction={addToFilter} 
-                  selectedFilters={selectedFilters}
-                  removeFromFilters={removeFilter}
-                  />)
-            }
-          }) 
-          }
+              }
+            })}
         </div>
-     
       </main>
-        
       <footer>
-
       </footer>
     </div>
   );

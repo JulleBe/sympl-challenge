@@ -25,7 +25,6 @@ export default function FilterButton ({
         }
        
     }
-
     // Doet een check op de selectedFilters array of een bepaalde filter wel of niet de array staat. 
     // Return = isSelected: Boolean
     function checkIfAlreadySelected () {
@@ -34,7 +33,6 @@ export default function FilterButton ({
     }
     
     useEffect(() => {
-        // 
         setActive(checkIfAlreadySelected())
     }, [tempArray, selectedFilters, checkIfAlreadySelected])
 

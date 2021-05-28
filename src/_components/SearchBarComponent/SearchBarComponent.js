@@ -1,3 +1,5 @@
+// Zoekbalk component
+
 import React from 'react';
 import './SearchBarComponent.scss';
 import {ReactComponent as SearchIcon} from '../../assets/misc/search.svg';
@@ -15,12 +17,10 @@ export default function SearchBar (  {
              className="searchbar_input"
              />
              <div className="searchbar_underline">
-
              </div>
              <div className="searchbar_iconContainer">
                 <SearchIcon />
              </div>
-            
         </div>
         </>
     )

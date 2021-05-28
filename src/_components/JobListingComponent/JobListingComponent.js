@@ -1,8 +1,9 @@
+// Job listing componeent, rendert de job listing met de juiste data
 import React, { useState } from 'react'; 
-
 import './JobListingComponent.scss';
+//Componenten
 import FilterButton from '../FilterButtonComponent/FilterButtonComponent';
-/* Job listing container, takes data from the database as props */
+
 
 export default function JobListingComponent ({
     // Database data
@@ -27,6 +28,7 @@ export default function JobListingComponent ({
     const [isActive, setActive] = useState(false)
     const categories = [functionRole, functionLevel, ...tools, ...languages];
     
+    // Toggle functie om de stijl van de listing aan te passen als deze geclickt is 
     function toggleActive() {
         setActive(!isActive);
     }
@@ -35,8 +37,6 @@ export default function JobListingComponent ({
         <>
         <article 
         className={`listingContainer ${isActive ?'listing_isActive' : '' } responsiveFrame`} >
-           
-          
            <div className="listing_logoContainer">
                 <picture>
                     <img src={companyLogo.default} alt={`${companyName} logo`} />
@@ -49,8 +49,7 @@ export default function JobListingComponent ({
                 <span className='listing_tagsContainer'> 
                     {isNew && <NewTag/>}
                     {isFeatured && <FeaturedTag/>}
-                </span>
-                
+                </span> 
             </div>
             <div className="listing_jobFunction" onClick={() => toggleActive()}>
                 <h3>{functionTitle}</h3>
@@ -63,7 +62,6 @@ export default function JobListingComponent ({
                 </ul>
             </div>
             </div>
-        
             <div className="listing_filtersWrapper">
                 {categories.map( (cat, index) => {
                     return (<FilterButton 
