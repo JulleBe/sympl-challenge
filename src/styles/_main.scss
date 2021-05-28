@@ -35,21 +35,10 @@ header {
             color: $darkestCyan;
         }
     }
-    @media only screen and (max-width: $mobile) {
-        h2 {
-            font-size: 1.8rem;
-        }
-
-    }
     .header_contentWrapper {
         display: flex;
         width: 80%;
         flex-wrap: wrap;
-    }
-    @media only screen and (max-width: $mobile) {
-        height: 200px;
-       background-image: url('../assets//backgrounds/bg-header-mobile.svg');
-        
     }
 }
 main {
@@ -72,4 +61,27 @@ main {
     @media only screen and (max-width: 700px) {
         width: 80%;
     }
+}
+
+@media only screen and (max-width: 700px) {
+    header {
+        min-height: 200px;
+        background-image: url('../assets//backgrounds/bg-header-mobile.svg') !important;
+        .header_contentWrapper {
+            width: 94%;
+        }
+         .header_title {
+             width: 100%;
+             h2 {
+                 font-size: 1.8rem;
+             }
+         }
+         .header_searchBarWrapper {
+             width: 98%;
+             max-width: 400px;
+             margin: auto;
+             margin-bottom: 20px;
+         }
+    }
+  
 }
