@@ -5,9 +5,11 @@ import JobListingComponent from './_components/JobListingComponent/JobListingCom
 import { useEffect, useState } from 'react';
 import FilterComponent from './_components/FilteringComponent/FilterComponent';
 import SearchBar from './_components/SearchBarComponent/SearchBarComponent';
+import {map} from 'underscore/modules/map.js';
 
 function App() {
-  const [selectedFilters, updateFilter] = useState(["Frontend",])
+  var _ = require('lodash');
+  const [selectedFilters, updateFilter] = useState([])
   // Voegt een nieuw filter aan de lijst toe
   function addToFilter(filterName) {
     let isSelected = selectedFilters.includes(filterName);
@@ -54,21 +56,17 @@ function App() {
     selFilters.sort()
     jobFilters.sort()
   
-    tempArray = selFilters.filter(e =>  jobFilters.includes(e))
+    tempArray = selFilters.filter(e => jobFilters.indexOf(e) !== -1)
     // 2 arrays vergelijken 
-    
     tempArray.sort()
-    for( let i = 0; i < selFilters.length; i++){
-     
-      if(selFilters[i] !== tempArray[i]) { 
-        return matches = false
-      }
-      else {
-        return matches = true
-      }
-    } 
-    console.log('t')
-    return matches
+    // Matchen van filters 
+    let matchedFilters = _.intersection(selFilters, jobFilters);
+    // Als beiden arrays gelijkstaan -> true returnen
+    if(matchedFilters.length === selFilters.length) {
+        return true
+    }else {
+      return false;
+    }
   }
 
   return (
@@ -116,9 +114,6 @@ function App() {
             if(selectedFilters.length !== 0 ){
 
               if((compareFilters(selectedFilters, listingCategories) === true)){
-             
-                console.log(compareFilters(selectedFilters, listingCategories))
-                
                 return (
                      
                   <JobListingComponent 
