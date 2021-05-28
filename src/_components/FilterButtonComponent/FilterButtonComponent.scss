@@ -7,25 +7,23 @@
     margin: 5px 5px ;
     cursor: pointer;
     transition: 0.3s ease;
-    .filterBtn_text {
-        font-family: $mainFont;
-        font-weight: bolder;
-        color: rgba($color: $primaryCyan, $alpha: 1.0);
-        font-size: 0.7rem;
-        padding: 5px 5px 5px;
-        line-height: 0.7rem;
-    }
+    font-family: $mainFont;
+    font-weight: bolder;
+    color: rgba($color: $primaryCyan, $alpha: 1.0);
+    font-size: 0.7rem;
+    padding: 6px;
+    
     &:hover {
         background-color: rgba($color: $primaryCyan, $alpha: 1.0);
-        .filterBtn_text {
-            color: rgba($color: $filterTablets, $alpha: 1.0);
-        }
+        
+        color: rgba($color: $filterTablets, $alpha: 1.0);
+        
     }
     
 }
 .filterBtn_active {
     background-color: rgba($color: $primaryCyan, $alpha: 1.0);
-    .filterBtn_text {
+   
         color: rgba($color: $filterTablets, $alpha: 1.0);
-    }
+    
 }

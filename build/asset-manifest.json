@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sympl-challenge/static/css/main.121ee6df.chunk.css",
-    "main.js": "/sympl-challenge/static/js/main.f492f818.chunk.js",
-    "main.js.map": "/sympl-challenge/static/js/main.f492f818.chunk.js.map",
+    "main.js": "/sympl-challenge/static/js/main.4aea6d3d.chunk.js",
+    "main.js.map": "/sympl-challenge/static/js/main.4aea6d3d.chunk.js.map",
     "runtime-main.js": "/sympl-challenge/static/js/runtime-main.3411dcff.js",
     "runtime-main.js.map": "/sympl-challenge/static/js/runtime-main.3411dcff.js.map",
     "static/js/2.77efe877.chunk.js": "/sympl-challenge/static/js/2.77efe877.chunk.js",
@@ -31,6 +31,6 @@
     "static/js/runtime-main.3411dcff.js",
     "static/js/2.77efe877.chunk.js",
     "static/css/main.121ee6df.chunk.css",
-    "static/js/main.f492f818.chunk.js"
+    "static/js/main.4aea6d3d.chunk.js"
   ]
 }

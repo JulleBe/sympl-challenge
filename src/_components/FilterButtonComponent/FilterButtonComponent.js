@@ -41,7 +41,7 @@ export default function FilterButton ({
             <button 
             className={`filterBtn_container ${isActive ? 'filterBtn_active': ''}`} 
             onClick={() => toggleActiveFilter()}>
-                <p className="filterBtn_text">{text}</p>
+                {text}
             </button>
         </>
     )

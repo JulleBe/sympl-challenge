@@ -46,10 +46,10 @@ export default function JobListingComponent ({
            
             <div className="listing_companyName">
                 <h4>{companyName}</h4> 
-                <span className='listing_tagsContainer'> 
+                <div className='listing_tagsContainer'> 
                     {isNew && <NewTag/>}
                     {isFeatured && <FeaturedTag/>}
-                </span> 
+                </div> 
             </div>
             <div className="listing_jobFunction" onClick={() => toggleActive()}>
                 <h3>{functionTitle}</h3>

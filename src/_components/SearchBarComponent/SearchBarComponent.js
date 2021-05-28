@@ -30,11 +30,13 @@ export default function SearchBar (  {
         <div className="searchbar_container">
             <input
              type="text" 
+             name="job_searchbar"
              placeholder="Search term" 
              className="searchbar_input"
              onKeyDown={handleEnter}
              onChange={handleInputChange}
              value={inputValue}
+             title="job_searchbar"
              />
              <div className="searchbar_underline">
              </div>
