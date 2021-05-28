@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/sympl-challenge/static/css/main.121ee6df.chunk.css",
-    "main.js": "/sympl-challenge/static/js/main.4aea6d3d.chunk.js",
-    "main.js.map": "/sympl-challenge/static/js/main.4aea6d3d.chunk.js.map",
+    "main.css": "/sympl-challenge/static/css/main.4e75dd15.chunk.css",
+    "main.js": "/sympl-challenge/static/js/main.7726507b.chunk.js",
+    "main.js.map": "/sympl-challenge/static/js/main.7726507b.chunk.js.map",
     "runtime-main.js": "/sympl-challenge/static/js/runtime-main.3411dcff.js",
     "runtime-main.js.map": "/sympl-challenge/static/js/runtime-main.3411dcff.js.map",
     "static/js/2.77efe877.chunk.js": "/sympl-challenge/static/js/2.77efe877.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.e29511f8.chunk.js": "/sympl-challenge/static/js/3.e29511f8.chunk.js",
     "static/js/3.e29511f8.chunk.js.map": "/sympl-challenge/static/js/3.e29511f8.chunk.js.map",
     "index.html": "/sympl-challenge/index.html",
-    "static/css/main.121ee6df.chunk.css.map": "/sympl-challenge/static/css/main.121ee6df.chunk.css.map",
+    "static/css/main.4e75dd15.chunk.css.map": "/sympl-challenge/static/css/main.4e75dd15.chunk.css.map",
     "static/js/2.77efe877.chunk.js.LICENSE.txt": "/sympl-challenge/static/js/2.77efe877.chunk.js.LICENSE.txt",
     "static/media/account.svg": "/sympl-challenge/static/media/account.903d6cd0.svg",
     "static/media/bg-header-desktop.svg": "/sympl-challenge/static/media/bg-header-desktop.8694f466.svg",
@@ -30,7 +30,7 @@
   "entrypoints": [
     "static/js/runtime-main.3411dcff.js",
     "static/js/2.77efe877.chunk.js",
-    "static/css/main.121ee6df.chunk.css",
-    "static/js/main.4aea6d3d.chunk.js"
+    "static/css/main.4e75dd15.chunk.css",
+    "static/js/main.7726507b.chunk.js"
   ]
 }
