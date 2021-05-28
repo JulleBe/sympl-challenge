@@ -4,7 +4,6 @@ import jobListings from './data.json';
 import JobListingComponent from './_components/JobListingComponent/JobListingComponent';
 import { useEffect, useState } from 'react';
 import FilterComponent from './_components/FilteringComponent/FilterComponent';
-import StringHelpers from './_helpers/StringHelpers'
 import SearchBar from './_components/SearchBarComponent/SearchBarComponent';
 
 function App() {
@@ -33,6 +32,10 @@ function App() {
     updateFilter(tempArray)
     console.log(filterName + ' removed')
   }
+
+  function removeFirstPointLogoURL(logoURL) {
+    return  logoURL.substring(1);
+ }
 
   useEffect(() => {
   
@@ -69,7 +72,7 @@ function App() {
         { jobListings.map(listing => {
           
           const IMG = (imgName) => {
-            return require(`./assets${StringHelpers.removeFirstPointLogoURL(imgName)}`)
+            return require(`./assets${removeFirstPointLogoURL(imgName)}`)
           }
           if(selectedFilters >= 0 ) {
             return (

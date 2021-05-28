@@ -10,6 +10,7 @@ header {
     background-repeat: no-repeat;
     background-image: url('../assets/backgrounds/bg-header-desktop.svg');
     background-size: cover;
+    background-position: left center;
     background-color: $primaryCyan;
     position: relative;
     display: flex;
@@ -38,11 +39,17 @@ header {
         h2 {
             font-size: 1.8rem;
         }
+
     }
     .header_contentWrapper {
         display: flex;
         width: 80%;
         flex-wrap: wrap;
+    }
+    @media only screen and (max-width: $mobile) {
+        height: 200px;
+       background-image: url('../assets//backgrounds/bg-header-mobile.svg');
+        
     }
 }
 main {
