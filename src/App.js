@@ -74,7 +74,9 @@ function App() {
             <h4>By Julien Menten</h4>
           </div>
           <div className="header_searchBarWrapper">
-              <SearchBar />
+              <SearchBar 
+              onEnter={addToFilter}
+              />
           </div>
         </div>
       </header>
