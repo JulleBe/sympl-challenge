@@ -7,39 +7,69 @@ import FilterComponent from './_components/FilteringComponent/FilterComponent';
 import SearchBar from './_components/SearchBarComponent/SearchBarComponent';
 
 function App() {
-  const [selectedFilters, updateFilter] = useState([])
+  const [selectedFilters, updateFilter] = useState(["Frontend",])
   // Voegt een nieuw filter aan de lijst toe
   function addToFilter(filterName) {
-    let isSelected = selectedFilters.includes(filterName)
+    let isSelected = selectedFilters.includes(filterName);
+  
+
     if(isSelected !== true) {
       let tempArray = [...selectedFilters];
       tempArray.push(filterName)
-      console.log(filterName + ' added')
       updateFilter(tempArray)
+    
     }
     else {
       // Waarde al geselecteerd
      
     }
-
+    
   }
-
+  
   // Verwijderd een geselecteerd filter uit de array
   function removeFilter(filterName) {
     let tempArray = [...selectedFilters];
     let indexOfFilter = tempArray.indexOf(filterName)
     tempArray.splice(indexOfFilter, 1)
     updateFilter(tempArray)
-    console.log(filterName + ' removed')
+  
   }
 
   function removeFirstPointLogoURL(logoURL) {
     return  logoURL.substring(1);
  }
 
+ 
+
   useEffect(() => {
+
+  }, [selectedFilters ])
+
+
+  function compareFilters (selFilters, jobFilters) {
+    let tempArray = [];
+    let matches = false;
+    
+    // Sorteren van beide arrays
+    selFilters.sort()
+    jobFilters.sort()
   
-  }, [selectedFilters])
+    tempArray = selFilters.filter(e =>  jobFilters.includes(e))
+    // 2 arrays vergelijken 
+    
+    tempArray.sort()
+    for( let i = 0; i < selFilters.length; i++){
+     
+      if(selFilters[i] !== tempArray[i]) { 
+        return matches = false
+      }
+      else {
+        return matches = true
+      }
+    } 
+    console.log('t')
+    return matches
+  }
 
   return (
 
@@ -69,47 +99,71 @@ function App() {
         }
 
         <div className="jobListing_wrapper">
-        { jobListings.map(listing => {
           
-          const IMG = (imgName) => {
-            return require(`./assets${removeFirstPointLogoURL(imgName)}`)
-          }
-          if(selectedFilters >= 0 ) {
-            return (
-              <JobListingComponent 
-                key={`${listing.li}-${listing.company}`}
-                companyName={listing.company}
-                companyLogo={IMG(listing.logo)}
-                isNew={listing.new}
-                isFeatured={listing.featured}
-                functionTitle={listing.position}
-                functionLevel={listing.level}
-                functionRole={listing.role}
-                contractType={listing.contract}
-                location={listing.location}
-                tools={listing.tools}
-                languages={listing.languages}
-                postedAt={listing.postedAt}
-                addToFilterfunction={addToFilter} 
-                selectedFilters={selectedFilters}
-                removeFromFilters={removeFilter}
-                />
-            )}
-          else {
-            selectedFilters.forEach(filter => {
-              jobListings.forEach(jobListing => {
-                let listingCategories = [ 
-                  ...jobListing.languages, 
-                  ...jobListing.tools, 
-                  jobListing.level,
-                  jobListing.role]
-                  // Todo: Compare the two arrays to find mathes
-                console.log(listingCategories)
-              })
-            })
-          }
+        {  
+            jobListings.map(listing => {
+             
+            const IMG = (imgName) => {
+              return require(`./assets${removeFirstPointLogoURL(imgName)}`)
+            }
 
-        })}
+            const listingCategories = [
+              listing.level,
+              listing.role,
+              ...listing.tools,
+              ...listing.languages
+            ]
+            if(selectedFilters.length !== 0 ){
+
+              if((compareFilters(selectedFilters, listingCategories) === true)){
+             
+                console.log(compareFilters(selectedFilters, listingCategories))
+                
+                return (
+                     
+                  <JobListingComponent 
+                    key={`${listing.li}-${listing.company}`}
+                    companyName={listing.company}
+                    companyLogo={IMG(listing.logo)}
+                    isNew={listing.new}
+                    isFeatured={listing.featured}
+                    functionTitle={listing.position}
+                    functionLevel={listing.level}
+                    functionRole={listing.role}
+                    contractType={listing.contract}
+                    location={listing.location}
+                    tools={listing.tools}
+                    languages={listing.languages}
+                    postedAt={listing.postedAt}
+                    addToFilterfunction={addToFilter} 
+                    selectedFilters={selectedFilters}
+                    removeFromFilters={removeFilter}
+                    />)
+                }
+            }else {
+              return (
+                     
+                <JobListingComponent 
+                  key={`${listing.li}-${listing.company}`}
+                  companyName={listing.company}
+                  companyLogo={IMG(listing.logo)}
+                  isNew={listing.new}
+                  isFeatured={listing.featured}
+                  functionTitle={listing.position}
+                  functionLevel={listing.level}
+                  functionRole={listing.role}
+                  contractType={listing.contract}
+                  location={listing.location}
+                  tools={listing.tools}
+                  languages={listing.languages}
+                  postedAt={listing.postedAt}
+                  addToFilterfunction={addToFilter} 
+                  selectedFilters={selectedFilters}
+                  removeFromFilters={removeFilter}
+                  />)
+            }
+          }) 
+          }
         </div>
      
       </main>
